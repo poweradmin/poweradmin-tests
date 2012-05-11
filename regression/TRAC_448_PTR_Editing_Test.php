@@ -13,8 +13,8 @@ class TRAC_448_PTR_Editing_Test extends PHPUnit_Extensions_SeleniumTestCase {
 		Common::doLogin();
 		Common::doAddMasterZone('poweradmin.com');
 
-		$this->clickAndWait("link=List zones");	
-		$this->clickAndWait("css=img[alt=[ View zone poweradmin.com ]]");
+		$this->clickAndWait("link=List zones");
+		$this->clickAndWait("css=img[alt=\"[ View zone poweradmin.com ]\"]");
 		$this->type('name', '1.0.168.192.in-addr.arpa');
 		$this->select('type', 'label=PTR');
 		$this->type('content', 'poweradmin.com');
@@ -22,11 +22,12 @@ class TRAC_448_PTR_Editing_Test extends PHPUnit_Extensions_SeleniumTestCase {
 		$this->verifyTextPresent("The record was successfully added.");
 
 		$this->clickAndWait("link=List zones");
-		$this->clickAndWait("css=img[alt=[ View zone poweradmin.com ]]");
-		$this->verifyValue("record[2][name]", "1.0.168.192.in-addr.arpa");
+		$this->clickAndWait("css=img[alt=\"[ View zone poweradmin.com ]\"]");
+//		$this->verifyValue("record[2][name]", "1.0.168.192.in-addr.arpa");
+        $this->verifyValue("//input[contains(@name,'name')]", "1.0.168.192.in-addr.arpa");
 
 		Common::doRemoveZone('poweradmin.com');
-	}	
-} 
+	}
+}
 
 ?>

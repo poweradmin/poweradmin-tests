@@ -2,15 +2,15 @@
 
 All tests should work fine with:
 - PHPUnit 3.4.13
-- selenium-server-standalone-2.0rc3.jar 
-- Firefox 3.6.18 
+- selenium-server-standalone-2.21.0.jar
+- Firefox 12 
 
 
 * How to run tests *
 
 1. Start Selenium server:
 
-	java -jar selenium-server-standalone-2.0rc3.jar
+	java -jar selenium-server-standalone-2.21.0.jar
 
 2. Get the latest source code and go to parent directory
 

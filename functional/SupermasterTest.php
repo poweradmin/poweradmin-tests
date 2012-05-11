@@ -30,7 +30,7 @@ class SupermasterTest extends PHPUnit_Extensions_SeleniumTestCase {
 		Common::doLogin();
 
 		$this->clickAndWait("link=List supermasters");
-		$this->clickAndWait("css=img[alt=[  Delete supermaster ]]");
+		$this->clickAndWait("css=img[alt=\"[  Delete supermaster ]\"]");
 		$this->clickAndWait("css=input.button");
 		$this->verifyTextPresent("The supermaster has been deleted successfully.");
 	}	

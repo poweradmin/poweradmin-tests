@@ -1,6 +1,6 @@
 <?php
 
-require_once 'inc/record.inc.php';
+require_once '../inc/record.inc.php';
 
 class SerialTest extends PHPUnit_Framework_TestCase
 {

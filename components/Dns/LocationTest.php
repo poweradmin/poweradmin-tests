@@ -1,6 +1,6 @@
 <?php
 
-require_once 'inc/dns.inc.php';
+require_once '../inc/dns.inc.php';
 
 class LocationTest extends PHPUnit_Framework_TestCase
 {

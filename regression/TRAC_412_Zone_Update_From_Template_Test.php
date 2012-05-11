@@ -3,7 +3,7 @@
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 require_once 'functional/common.php';
 
-class BUG446_Zone_Update_From_Template_Test extends PHPUnit_Extensions_SeleniumTestCase {
+class TRAC_446_Zone_Update_From_Template_Test extends PHPUnit_Extensions_SeleniumTestCase {
 
 	protected function setUp() {
 		$this->setBrowserUrl(BROWSER_URL);

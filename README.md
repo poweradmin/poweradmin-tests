@@ -26,6 +26,7 @@ git clone git://github.com/poweradmin/poweradmin-tests.git tests
 3. Run select type of tests:
 
 ```
+cd tests
 phpunit components	(only core functions)
 phpunit functional	(only web UI, browser and selenium server is required)
 phpunit regression

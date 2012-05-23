@@ -2,7 +2,7 @@
 
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
-class Common extends PHPUnit_Extensions_SeleniumTestCase {
+class Common {
 
 	public function doLogin($password='admin') {
 		$this->open(SERVER_PATH);
@@ -26,6 +26,15 @@ class Common extends PHPUnit_Extensions_SeleniumTestCase {
 		$this->type('domain_1', $zone);
 		$this->clickAndWait("submit");
 	}
+
+    public function doAddZoneRecord($zone, $name, $content) {
+        $this->clickAndWait("link=List zones");
+        $this->clickAndWait("css=img[alt=\"[ View zone $zone ]\"]");
+        $this->type('name', $name);
+        $this->type('content', $content);
+        $this->clickAndWait("xpath=(//input[@name='commit'])[2]");
+        $this->verifyTextPresent("The record was successfully added.");
+    }
 
 	public function doRemoveZone($zone) {
 		$this->open(SERVER_PATH.'list_zones.php');

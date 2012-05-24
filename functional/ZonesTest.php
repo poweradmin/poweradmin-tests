@@ -18,14 +18,27 @@ class ZonesTest extends PHPUnit_Extensions_SeleniumTestCase {
 
     public function testAddMasterZone() {
         Common::doLogin();
-        Common::doAddMasterZone('poweradmin.com');
-        $this->verifyTextPresent("poweradmin.com - Zone has been added successfully.");
+        Common::doAddMasterZone('poweradmin.org');
+        $this->verifyTextPresent("poweradmin.org - Zone has been added successfully.");
     }
 
     public function testRemoveZone() {
         Common::doLogin();
-        Common::doRemoveZone('poweradmin.com');
+        Common::doRemoveZone('poweradmin.org');
         $this->verifyTextPresent("Zone has been deleted successfully.");
+    }
+
+    public function testAddSlaveZone() {
+        Common::doLogin();
+
+        $this->clickAndWait("link=Add slave zone");
+        $this->type("domain", "poweradmin.org");
+        $this->type("slave_master", "127.0.0.1");
+        $this->clickAndWait("submit");
+
+        $this->verifyTextPresent("Zone has been added successfully.");
+
+        Common::doRemoveZone("poweradmin.org");
     }
 
     public function testNonEmptyZoneList() {
@@ -37,6 +50,22 @@ class ZonesTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->clickAndWait("link=List zones");
         $this->verifyTextPresent('poweradmin.org');
         $this->verifyTextPresent('poteradmin.org');
+
+        Common::doRemoveZone('poweradmin.org');
+        Common::doRemoveZone('poteradmin.org');
+    }
+
+    public function testAddMultipleMasterZones() {
+        Common::doLogin();
+
+        $this->clickAndWait("link=Add master zone");
+        $this->type("domain_1", "poweradmin.org");
+        $this->click("css=input.button");
+        $this->type("domain_2", "poteradmin.org");
+        $this->clickAndWait("submit");
+
+        $this->verifyTextPresent("poweradmin.org - Zone has been added successfully.");
+        $this->verifyTextPresent("poteradmin.org - Zone has been added successfully.");
 
         Common::doRemoveZone('poweradmin.org');
         Common::doRemoveZone('poteradmin.org');

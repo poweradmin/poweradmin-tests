@@ -3,17 +3,17 @@
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 require_once 'common.php';
 
-class LoginLogoutTest extends PHPUnit_Extensions_SeleniumTestCase {
+class UserTest extends PHPUnit_Extensions_SeleniumTestCase {
 
 	protected function setUp() {
 		$this->setBrowserUrl(BROWSER_URL);
 	}
 
-	public function testSuccessfulLogin() {
-		Common::doLogin();
+    public function testSuccessfulLogin() {
+        Common::doLogin();
 
-		$this->verifyTextPresent('Welcome Administrator');
-	}
+        $this->verifyTextPresent('Welcome Administrator');
+    }
 
     public function testUnsuccessfulLogin() {
         $this->open(SERVER_PATH);
@@ -30,6 +30,18 @@ class LoginLogoutTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->clickAndWait('link=Logout');
         $this->verifyTextPresent('You have logged out.');
     }
+
+	public function testChangePassword() {
+		Common::doLogin();
+		Common::doChangePassword('admin', 'nimda');
+
+		$this->verifyTextPresent("Password has been changed, please login.");
+
+		// restore default password
+		// FIXME: use database fixtures
+		Common::doLogin('nimda');
+		Common::doChangePassword('nimda', 'admin');
+	}
 
 } 
 

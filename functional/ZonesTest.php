@@ -3,7 +3,7 @@
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 require_once 'common.php';
 
-class ListZonesTest extends PHPUnit_Extensions_SeleniumTestCase {
+class ZonesTest extends PHPUnit_Extensions_SeleniumTestCase {
 
 	protected function setUp() {
 		$this->setBrowserUrl(BROWSER_URL);
@@ -16,6 +16,18 @@ class ListZonesTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->verifyTextPresent('There are no zones to show in this listing.');
 	}
 
+    public function testAddMasterZone() {
+        Common::doLogin();
+        Common::doAddMasterZone('poweradmin.com');
+        $this->verifyTextPresent("poweradmin.com - Zone has been added successfully.");
+    }
+
+    public function testRemoveZone() {
+        Common::doLogin();
+        Common::doRemoveZone('poweradmin.com');
+        $this->verifyTextPresent("Zone has been deleted successfully.");
+    }
+
     public function testNonEmptyZoneList() {
         Common::doLogin();
 
@@ -25,6 +37,9 @@ class ListZonesTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->clickAndWait("link=List zones");
         $this->verifyTextPresent('poweradmin.org');
         $this->verifyTextPresent('poteradmin.org');
+
+        Common::doRemoveZone('poweradmin.org');
+        Common::doRemoveZone('poteradmin.org');
     }
 
 } 

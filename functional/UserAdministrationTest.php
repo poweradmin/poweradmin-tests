@@ -3,7 +3,7 @@
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 require_once 'common.php';
 
-class UserTest extends PHPUnit_Extensions_SeleniumTestCase {
+class UserAdministrationTest extends PHPUnit_Extensions_SeleniumTestCase {
 
 	protected function setUp() {
 		$this->setBrowserUrl(BROWSER_URL);

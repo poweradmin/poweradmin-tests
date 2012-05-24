@@ -43,6 +43,13 @@ class UserTest extends PHPUnit_Extensions_SeleniumTestCase {
 		Common::doChangePassword('nimda', 'admin');
 	}
 
+    public function testIncorrectChangePassword() {
+        Common::doLogin();
+        Common::doChangePassword('nimda', 'admin');
+
+        $this->verifyTextPresent("Error: You did not enter the correct current password.");
+    }
+
 } 
 
 ?>

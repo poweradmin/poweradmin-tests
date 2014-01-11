@@ -5,16 +5,16 @@ require_once 'common.php';
 
 class ZonesTest extends PHPUnit_Extensions_SeleniumTestCase {
 
-	protected function setUp() {
-		$this->setBrowserUrl(BROWSER_URL);
-	}
+    protected function setUp() {
+        $this->setBrowserUrl(BROWSER_URL);
+    }
 
-	public function testEmptyZoneList() {
-		Common::doLogin();
+    public function testEmptyZoneList() {
+        Common::doLogin();
 
         $this->clickAndWait("link=List zones");
         $this->verifyTextPresent('There are no zones to show in this listing.');
-	}
+    }
 
     public function testAddMasterZone() {
         Common::doLogin();
@@ -121,6 +121,7 @@ class ZonesTest extends PHPUnit_Extensions_SeleniumTestCase {
 
         Common::doRemoveZone('poweradmin.org');
     }
-} 
+
+}
 
 ?>

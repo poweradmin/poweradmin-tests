@@ -5,12 +5,12 @@ require_once 'common.php';
 
 class ZoneTemplatesTest extends PHPUnit_Extensions_SeleniumTestCase {
 
-	protected function setUp() {
-		$this->setBrowserUrl(BROWSER_URL);
-	}
+    protected function setUp() {
+        $this->setBrowserUrl(BROWSER_URL);
+    }
 
-	public function testAddZoneTemplate() {
-		Common::doLogin();
+    public function testAddZoneTemplate() {
+        Common::doLogin();
 
         $this->clickAndWait("link=List zone templates");
         $this->clickAndWait("link=Add zone template");
@@ -18,7 +18,7 @@ class ZoneTemplatesTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->type("templ_descr", "www");
         $this->clickAndWait("commit");
         $this->verifyTextPresent('Zone template has been added successfully.');
-	}
+    }
 
     public function testAddRecordToZoneTemplate() {
         Common::doLogin();
@@ -72,6 +72,6 @@ class ZoneTemplatesTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->verifyTextPresent('Zone template has been deleted successfully.');
     }
 
-} 
+}
 
 ?>

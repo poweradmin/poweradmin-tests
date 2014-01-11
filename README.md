@@ -1,10 +1,10 @@
 # Requirements
 
 All tests should work fine with:
-* PHPUnit 3.6.10
+* PHPUnit 3.7.28
 * PEAR phpunit/PHPUnit_Selenium
-* selenium-server-standalone-2.21.0.jar
-* Firefox 12 
+* selenium-server-standalone-2.39.0.jar
+* Firefox 26
 
 
 # How to run tests
@@ -12,15 +12,15 @@ All tests should work fine with:
 1. Start Selenium server:
 
 ```
-java -jar selenium-server-standalone-2.21.0.jar
+java -jar selenium-server-standalone-2.39.0.jar
 ```
 
 2. Get the latest source code and also fetch tests repository:
 
 ```
-git clone git://github.com/poweradmin/poweradmin.git
+git clone https://github.com/poweradmin/poweradmin.git
 cd poweradmin
-git clone git://github.com/poweradmin/poweradmin-tests.git tests
+git clone https://github.com/poweradmin/poweradmin-tests.git tests
 ```
 
 3. Run select type of tests:

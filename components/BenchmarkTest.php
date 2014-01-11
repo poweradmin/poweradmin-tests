@@ -1,5 +1,5 @@
 <?php
-
+/*
 require '../vendor/Poweradmin/Benchmark.php';
 
 class BenchmarkTest extends PHPUnit_Framework_TestCase
@@ -18,3 +18,4 @@ class BenchmarkTest extends PHPUnit_Framework_TestCase
     }
 
 }
+*/

@@ -4,8 +4,8 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
 class Common {
 
-    public function doLogin($password = 'admin') {
-        $this->open(SERVER_PATH);
+    public function doLogin($password = 'admin', $script = '') {
+        $this->open(SERVER_PATH.$script);
         $this->type('username', 'admin');
         $this->type('password', $password);
         $this->click('authenticate');

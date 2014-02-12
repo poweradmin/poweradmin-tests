@@ -10,7 +10,7 @@ class UserTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testSuccessfulLogin() {
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->verifyTextPresent('Welcome Administrator');
     }
@@ -26,32 +26,32 @@ class UserTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testSuccessfulLogout() {
-        Common::doLogin();
+        Common::doLogin($this);
         $this->clickAndWait('link=Logout');
         $this->verifyTextPresent('You have logged out.');
     }
 
     public function testChangePassword() {
-        Common::doLogin();
-        Common::doChangePassword('admin', 'nimda');
+        Common::doLogin($this);
+        Common::doChangePassword($this, 'admin', 'nimda');
 
         $this->verifyTextPresent("Password has been changed, please login.");
 
         // restore default password
         // FIXME: use database fixtures
-        Common::doLogin('nimda');
-        Common::doChangePassword('nimda', 'admin');
+        Common::doLogin($this, 'nimda');
+        Common::doChangePassword($this, 'nimda', 'admin');
     }
 
     public function testIncorrectChangePassword() {
-        Common::doLogin();
-        Common::doChangePassword('nimda', 'admin');
+        Common::doLogin($this);
+        Common::doChangePassword($this, 'nimda', 'admin');
 
         $this->verifyTextPresent("Error: You did not enter the correct current password.");
     }
 
     public function testCommitChanges() {
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->clickAndWait("link=User administration");
         $this->type("user[1][descr]", "Uberuser");
@@ -64,7 +64,7 @@ class UserTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testAddUser() {
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->clickAndWait("link=User administration");
         $this->clickAndWait("link=Add user");
@@ -78,7 +78,7 @@ class UserTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testRemoveUser() {
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->clickAndWait("link=User administration");
         $this->clickAndWait("css=img[alt=\"[ Delete user ]\"]");
@@ -87,5 +87,3 @@ class UserTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
 }
-
-?>

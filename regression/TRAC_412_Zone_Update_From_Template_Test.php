@@ -10,8 +10,8 @@ class TRAC_446_Zone_Update_From_Template_Test extends PHPUnit_Extensions_Seleniu
     }
 
     public function testZoneUpdateFromTemplate() {
-        Common::doLogin();
-        Common::doAddMasterZone('poweradmin.com');
+        Common::doLogin($this);
+        Common::doAddMasterZone($this, 'poweradmin.com');
 
         $this->clickAndWait("link=List zone templates");
         $this->clickAndWait("link=Add zone template");
@@ -49,9 +49,7 @@ class TRAC_446_Zone_Update_From_Template_Test extends PHPUnit_Extensions_Seleniu
         $this->clickAndWait("css=img[alt=\"[ Delete template ]\"]");
         $this->clickAndWait("css=input.button");
 
-        Common::doRemoveZone('poweradmin.com');
+        Common::doRemoveZone($this, 'poweradmin.com');
     }
 
 }
-
-?>

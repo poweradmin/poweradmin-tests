@@ -10,7 +10,7 @@ class ZoneTemplatesTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testAddZoneTemplate() {
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->clickAndWait("link=List zone templates");
         $this->clickAndWait("link=Add zone template");
@@ -21,7 +21,7 @@ class ZoneTemplatesTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testAddRecordToZoneTemplate() {
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->clickAndWait("link=List zone templates");
         $this->clickAndWait("css=img[alt=\"[ Edit template ]\"]");
@@ -37,7 +37,7 @@ class ZoneTemplatesTest extends PHPUnit_Extensions_SeleniumTestCase {
     public function testUseZoneTemplate() {
         $this->markTestIncomplete();
 
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->clickAndWait("link=Add master zone");
         $this->type("domain_1", "poweradmin.org");
@@ -50,11 +50,11 @@ class ZoneTemplatesTest extends PHPUnit_Extensions_SeleniumTestCase {
         //TODO: how to check such dynamic field?
         //$this->verifyValue("name=record[190][content]", "poweradmin.org");
 
-        Common::doRemoveZone('poweradmin.org');
+        Common::doRemoveZone($this, 'poweradmin.org');
     }
 
     public function testRecordFromZoneTemplate() {
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->clickAndWait("link=List zone templates");
         $this->clickAndWait("css=img[alt=\"[ Edit template ]\"]");
@@ -64,7 +64,7 @@ class ZoneTemplatesTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testRemoveZoneTemplate() {
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->clickAndWait("link=List zone templates");
         $this->clickAndWait("css=img[alt=\"[ Delete template ]\"]");
@@ -73,5 +73,3 @@ class ZoneTemplatesTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
 }
-
-?>

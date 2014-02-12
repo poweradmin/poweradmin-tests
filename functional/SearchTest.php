@@ -10,23 +10,23 @@ class SearchTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testFindZone() {
-        Common::doLogin();
+        Common::doLogin($this);
 
-        Common::doAddMasterZone('poweradmin.org');
+        Common::doAddMasterZone($this, 'poweradmin.org');
 
         $this->clickAndWait("link=Search zones and records");
         $this->type('css=td > input[name=query]', 'poweradmin.org');
         $this->clickAndWait('submit');
         $this->verifyTextPresent('master');
 
-        Common::doRemoveZone('poweradmin.org');
+        Common::doRemoveZone($this, 'poweradmin.org');
     }
 
     public function testFindZoneWithUnderscorePattern() {
-        Common::doLogin();
+        Common::doLogin($this);
 
-        Common::doAddMasterZone('poweradmin.org');
-        Common::doAddMasterZone('poteradmin.org');
+        Common::doAddMasterZone($this, 'poweradmin.org');
+        Common::doAddMasterZone($this, 'poteradmin.org');
 
         $this->clickAndWait("link=Search zones and records");
         $this->type('css=td > input[name=query]', 'po_eradmin.org');
@@ -34,15 +34,15 @@ class SearchTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->verifyTextPresent('poweradmin.org');
         $this->verifyTextPresent('poteradmin.org');
 
-        Common::doRemoveZone('poteradmin.org');
-        Common::doRemoveZone('poweradmin.org');
+        Common::doRemoveZone($this, 'poteradmin.org');
+        Common::doRemoveZone($this, 'poweradmin.org');
     }
 
     public function testFindZoneWithPercentPattern() {
-        Common::doLogin();
+        Common::doLogin($this);
 
-        Common::doAddMasterZone('poweradmin.org');
-        Common::doAddMasterZone('poteradmin.org');
+        Common::doAddMasterZone($this, 'poweradmin.org');
+        Common::doAddMasterZone($this, 'poteradmin.org');
 
         $this->clickAndWait("link=Search zones and records");
         $this->type('css=td > input[name=query]', 'po%');
@@ -50,15 +50,15 @@ class SearchTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->verifyTextPresent('poweradmin.org');
         $this->verifyTextPresent('poteradmin.org');
 
-        Common::doRemoveZone('poteradmin.org');
-        Common::doRemoveZone('poweradmin.org');
+        Common::doRemoveZone($this, 'poteradmin.org');
+        Common::doRemoveZone($this, 'poweradmin.org');
     }
 
     public function testFindZoneRecord() {
-        Common::doLogin();
+        Common::doLogin($this);
 
-        Common::doAddMasterZone('poweradmin.org');
-        Common::doAddZoneRecord('poweradmin.org', 'www', '127.0.0.1');
+        Common::doAddMasterZone($this, 'poweradmin.org');
+        Common::doAddZoneRecord($this, 'poweradmin.org', 'www', '127.0.0.1');
 
         $this->clickAndWait("link=Search zones and records");
         $this->type('css=td > input[name=query]', 'www.poweradmin.org');
@@ -66,16 +66,16 @@ class SearchTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->verifyTextPresent('www.poweradmin.org');
         $this->verifyTextPresent('127.0.0.1');
 
-        Common::doRemoveZone('poweradmin.org');
+        Common::doRemoveZone($this, 'poweradmin.org');
     }
 
     public function testFindZoneRecordWithUnderscorePattern() {
-        Common::doLogin();
+        Common::doLogin($this);
 
-        Common::doAddMasterZone('poweradmin.org');
-        Common::doAddMasterZone('poteradmin.org');
-        Common::doAddZoneRecord('poweradmin.org', 'www', '127.0.0.1');
-        Common::doAddZoneRecord('poteradmin.org', 'www', '127.0.0.1');
+        Common::doAddMasterZone($this, 'poweradmin.org');
+        Common::doAddMasterZone($this, 'poteradmin.org');
+        Common::doAddZoneRecord($this, 'poweradmin.org', 'www', '127.0.0.1');
+        Common::doAddZoneRecord($this, 'poteradmin.org', 'www', '127.0.0.1');
 
         $this->clickAndWait("link=Search zones and records");
         $this->type('css=td > input[name=query]', 'www.po_eradmin.org');
@@ -84,17 +84,17 @@ class SearchTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->verifyTextPresent('www.poteradmin.org');
         $this->verifyTextPresent('127.0.0.1');
 
-        Common::doRemoveZone('poteradmin.org');
-        Common::doRemoveZone('poweradmin.org');
+        Common::doRemoveZone($this, 'poteradmin.org');
+        Common::doRemoveZone($this, 'poweradmin.org');
     }
 
     public function testFindZoneRecordWithPercentPattern() {
-        Common::doLogin();
+        Common::doLogin($this);
 
-        Common::doAddMasterZone('poweradmin.org');
-        Common::doAddMasterZone('poteradmin.org');
-        Common::doAddZoneRecord('poweradmin.org', 'www', '127.0.0.1');
-        Common::doAddZoneRecord('poteradmin.org', 'www', '127.0.0.1');
+        Common::doAddMasterZone($this, 'poweradmin.org');
+        Common::doAddMasterZone($this, 'poteradmin.org');
+        Common::doAddZoneRecord($this, 'poweradmin.org', 'www', '127.0.0.1');
+        Common::doAddZoneRecord($this, 'poteradmin.org', 'www', '127.0.0.1');
 
         $this->clickAndWait("link=Search zones and records");
         $this->type('css=td > input[name=query]', 'www.po%');
@@ -103,10 +103,8 @@ class SearchTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->verifyTextPresent('www.poteradmin.org');
         $this->verifyTextPresent('127.0.0.1');
 
-        Common::doRemoveZone('poteradmin.org');
-        Common::doRemoveZone('poweradmin.org');
+        Common::doRemoveZone($this, 'poteradmin.org');
+        Common::doRemoveZone($this, 'poweradmin.org');
     }
 
 }
-
-?>

@@ -23,5 +23,3 @@ class SerialTest extends PHPUnit_Framework_TestCase {
     }
 
 }
-
-?>

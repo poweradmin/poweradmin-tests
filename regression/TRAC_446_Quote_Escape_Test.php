@@ -12,8 +12,8 @@ class TRAC_446_Quote_Escape_Test extends PHPUnit_Extensions_SeleniumTestCase {
     public function testQuoteEscape() {
         $this->markTestSkipped("Test case fails, need to review it");
 
-        Common::doLogin();
-        Common::doAddMasterZone('poweradmin.com');
+        Common::doLogin($this);
+        Common::doAddMasterZone($this, 'poweradmin.com');
 
         $this->clickAndWait("link=List zones");
         $this->clickAndWait("css=img[alt=\"[ View zone poweradmin.com ]\"]");
@@ -27,9 +27,7 @@ class TRAC_446_Quote_Escape_Test extends PHPUnit_Extensions_SeleniumTestCase {
         //TODO: this check fails
         $this->verifyValue("//input[contains(@name,'content')]", "var='value'");
 
-        Common::doRemoveZone('poweradmin.com');
+        Common::doRemoveZone($this, 'poweradmin.com');
     }
 
 }
-
-?>

@@ -10,7 +10,7 @@ class SupermastersTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testAddSupermaster() {
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->clickAndWait("link=Add supermaster");
         $this->type('master_ip', '127.0.0.1');
@@ -20,14 +20,14 @@ class SupermastersTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testListSupermasters() {
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->clickAndWait("link=List supermasters");
         $this->verifyTextPresent("sm.poweradmin.com");
     }
 
     public function testDeleteSupermaster() {
-        Common::doLogin();
+        Common::doLogin($this);
 
         $this->clickAndWait("link=List supermasters");
         $this->clickAndWait("css=img[alt=\"[  Delete supermaster ]\"]");
@@ -36,5 +36,3 @@ class SupermastersTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
 }
-
-?>

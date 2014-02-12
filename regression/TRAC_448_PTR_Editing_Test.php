@@ -11,8 +11,9 @@ class TRAC_448_PTR_Editing_Test extends PHPUnit_Extensions_SeleniumTestCase {
 
     public function testPTREditing() {
         $this->markTestSkipped('Currently fails, need to review changes and merge requests');
-        Common::doLogin();
-        Common::doAddMasterZone('poweradmin.com');
+
+        Common::doLogin($this);
+        Common::doAddMasterZone($this, 'poweradmin.com');
 
         $this->clickAndWait("link=List zones");
         $this->clickAndWait("css=img[alt=\"[ View zone poweradmin.com ]\"]");
@@ -27,9 +28,7 @@ class TRAC_448_PTR_Editing_Test extends PHPUnit_Extensions_SeleniumTestCase {
 //		$this->verifyValue("record[2][name]", "1.0.168.192.in-addr.arpa");
         $this->verifyValue("//input[contains(@name,'name')]", "1.0.168.192.in-addr.arpa");
 
-        Common::doRemoveZone('poweradmin.com');
+        Common::doRemoveZone($this, 'poweradmin.com');
     }
 
 }
-
-?>

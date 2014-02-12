@@ -1,6 +1,6 @@
 <?php
 /*
-require '../vendor/Poweradmin/Benchmark.php';
+require '../inc/Benchmark.php';
 
 class BenchmarkTest extends PHPUnit_Framework_TestCase
 {

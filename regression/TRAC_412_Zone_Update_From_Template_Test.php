@@ -11,7 +11,7 @@ class TRAC_446_Zone_Update_From_Template_Test extends PHPUnit_Extensions_Seleniu
 
     public function testZoneUpdateFromTemplate() {
         Common::doLogin($this);
-        Common::doAddMasterZone($this, 'poweradmin.com');
+        Common::doAddMasterZone($this, 'poweradmin.org');
 
         $this->clickAndWait("link=List zone templates");
         $this->clickAndWait("link=Add zone template");
@@ -29,16 +29,16 @@ class TRAC_446_Zone_Update_From_Template_Test extends PHPUnit_Extensions_Seleniu
         $this->clickAndWait("commit");
 
         $this->clickAndWait("link=List zones");
-        $this->clickAndWait("css=img[alt=\"[ View zone poweradmin.com ]\"]");
+        $this->clickAndWait("css=img[alt=\"[ View zone poweradmin.org ]\"]");
         $this->select('zone_template', 'label=www');
         $this->clickAndWait("template_change");
 
         $this->clickAndWait("link=List zones");
-        $this->clickAndWait("css=img[alt=\"[ View zone poweradmin.com ]\"]");
-//		$this->verifyValue("record[1][name]", "www.poweradmin.com");
-        $this->verifyValue("//input[contains(@name,'name')]", "www.poweradmin.com");
-//		$this->verifyValue("record[1][content]", "poweradmin.com");
-        $this->verifyValue("//input[contains(@name,'content')]", "poweradmin.com");
+        $this->clickAndWait("css=img[alt=\"[ View zone poweradmin.org ]\"]");
+//		$this->verifyValue("record[1][name]", "www.poweradmin.org");
+        $this->verifyValue("//input[contains(@name,'name')]", "www.poweradmin.org");
+//		$this->verifyValue("record[1][content]", "poweradmin.org");
+        $this->verifyValue("//input[contains(@name,'content')]", "poweradmin.org");
 
         $this->clickAndWait("link=List zone templates");
         $this->clickAndWait("css=img[alt=\"[ Edit template ]\"]");
@@ -49,7 +49,7 @@ class TRAC_446_Zone_Update_From_Template_Test extends PHPUnit_Extensions_Seleniu
         $this->clickAndWait("css=img[alt=\"[ Delete template ]\"]");
         $this->clickAndWait("css=input.button");
 
-        Common::doRemoveZone($this, 'poweradmin.com');
+        Common::doRemoveZone($this, 'poweradmin.org');
     }
 
 }

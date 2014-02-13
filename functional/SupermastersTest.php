@@ -14,7 +14,7 @@ class SupermastersTest extends PHPUnit_Extensions_SeleniumTestCase {
 
         $this->clickAndWait("link=Add supermaster");
         $this->type('master_ip', '127.0.0.1');
-        $this->type('ns_name', 'sm.poweradmin.com');
+        $this->type('ns_name', 'sm.poweradmin.org');
         $this->clickAndWait("submit");
         $this->verifyTextPresent("The supermaster has been added successfully.");
     }
@@ -23,7 +23,7 @@ class SupermastersTest extends PHPUnit_Extensions_SeleniumTestCase {
         Common::doLogin($this);
 
         $this->clickAndWait("link=List supermasters");
-        $this->verifyTextPresent("sm.poweradmin.com");
+        $this->verifyTextPresent("sm.poweradmin.org");
     }
 
     public function testDeleteSupermaster() {

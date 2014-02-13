@@ -13,22 +13,22 @@ class TRAC_448_PTR_Editing_Test extends PHPUnit_Extensions_SeleniumTestCase {
         $this->markTestSkipped('Currently fails, need to review changes and merge requests');
 
         Common::doLogin($this);
-        Common::doAddMasterZone($this, 'poweradmin.com');
+        Common::doAddMasterZone($this, 'poweradmin.org');
 
         $this->clickAndWait("link=List zones");
-        $this->clickAndWait("css=img[alt=\"[ View zone poweradmin.com ]\"]");
+        $this->clickAndWait("css=img[alt=\"[ View zone poweradmin.org ]\"]");
         $this->type('name', '1.0.168.192.in-addr.arpa');
         $this->select('type', 'label=PTR');
-        $this->type('content', 'poweradmin.com');
+        $this->type('content', 'poweradmin.org');
         $this->clickAndWait("//input[@name='commit' and @value='Add record']");
         $this->verifyTextPresent("The record was successfully added.");
 
         $this->clickAndWait("link=List zones");
-        $this->clickAndWait("css=img[alt=\"[ View zone poweradmin.com ]\"]");
+        $this->clickAndWait("css=img[alt=\"[ View zone poweradmin.org ]\"]");
 //		$this->verifyValue("record[2][name]", "1.0.168.192.in-addr.arpa");
         $this->verifyValue("//input[contains(@name,'name')]", "1.0.168.192.in-addr.arpa");
 
-        Common::doRemoveZone($this, 'poweradmin.com');
+        Common::doRemoveZone($this, 'poweradmin.org');
     }
 
 }

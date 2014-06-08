@@ -98,6 +98,8 @@ class ZonesTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testBulkRegistrationWrongZone() {
+        $this->markTestIncomplete();
+
         Common::doLogin($this);
 
         $this->clickAndWait('link=Bulk registration');
@@ -109,6 +111,8 @@ class ZonesTest extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function testBulkRegistrationCorrectAndWrongZone() {
+        $this->markTestIncomplete();
+
         Common::doLogin($this);
 
         $this->clickAndWait('link=Bulk registration');
